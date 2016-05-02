@@ -1,8 +1,8 @@
 ## Prerequisites
 This app assumes that you already have the following installed
-* rbenv or RVM
-* PostgreSQL
-* Ruby 2.3.0 or newer
+1. rbenv or RVM
+2. PostgreSQL
+3. Ruby 2.3.0 or newer
 
 ## Setup
 1. pull the branch
