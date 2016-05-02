@@ -1,5 +1,5 @@
 # Change these
-server 'ec2-52-36-172-132.us-west-2.compute.amazonaws.com', port: 22, roles: [:web, :app], primary: true
+server 'ec2-52-36-172-132.us-west-2.compute.amazonaws.com', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@bitbucket.org:bingielabs/bingie.git'
 set :application,     'bingie'
