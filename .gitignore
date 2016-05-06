@@ -16,6 +16,9 @@
 !/log/.keep
 /tmp
 
+#ignore omdb dumps
+/omdbDump/*
+
 # Ignore application configuration
 /config/application.yml
 

@@ -9,4 +9,23 @@ html
     = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
     = csrf_meta_tags
   body
-    = yield
+    .navbar.navbar-default.navbar-static-top
+      .container
+        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand href="#" Bingie
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          ul.nav.navbar-nav
+            li= link_to "Some Link 1", "#"
+            li= link_to "Some Link 2", "#"
+            li= link_to "Some Link 3", "#"
+
+    .container.main-container
+      .row
+        .col-lg-9
+          = yield
+
+    footer
+      p.text-center &copy; Bingie Team 2016

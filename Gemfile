@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omdb-api'
 gem 'puma'
 gem 'slim-rails'
+gem 'twitter-typeahead-rails'
 
 group :development, :test do
   gem 'pry-byebug'
