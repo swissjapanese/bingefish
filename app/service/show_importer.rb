@@ -41,6 +41,9 @@ class ShowImporter
       else
         Show.create show_params
       end
+
+      i = i + 1
+      puts "#{i} records imported" if i % 10_000 == 0
     end
   end
 end
