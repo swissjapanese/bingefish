@@ -1,0 +1,24 @@
+.card-container.row
+  .col-md-3
+    image.search-card-poster src=show.poster_url
+  .col-md-8.card-details
+    .row.card-detail
+      .card-label.col-md-3
+        | Title
+      .card-value.col-md-9
+        = "#{show.title} (#{show.year})"
+    .row.card-detail
+      .card-label.col-md-3
+        | Cast
+      .card-value.col-md-9
+        = show.cast
+    .row.card-detail
+      .card-label.col-md-3
+        | Genre
+      .card-value.col-md-9
+        = show.genre
+    .row.card-detail
+      .card-label.col-md-3
+        | Plot
+      .card-value.col-md-9
+        = show.plot

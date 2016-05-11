@@ -43,6 +43,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.2)
     byebug (8.2.5)
     coderay (1.1.1)
@@ -78,6 +81,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -205,12 +211,14 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bootstrap-kaminari-views
   coffee-rails (~> 4.1.0)
   factory_girl_rails
   faker
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   omdb-api
   pg
   pry-byebug

@@ -1,0 +1,30 @@
+.card-container {
+  font-size: 16;
+  margin: 1em 0px;
+
+  .card-details {
+    padding: 2em 0px;
+
+    .card-detail {
+      margin-bottom: 5px;
+    }
+  }
+
+  .search-card-poster {
+    width: 100%;
+  }
+
+  .card-label {
+    text-align: right;
+    font-weight: bold;
+  }
+}
+
+.search-pagination-container {
+  display: flex;
+  margin: 2em 0px;
+
+  .pagination {
+    margin: auto !important;
+  }
+}

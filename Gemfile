@@ -14,6 +14,8 @@ gem 'omdb-api'
 gem 'puma'
 gem 'slim-rails'
 gem 'twitter-typeahead-rails'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development, :test do
   gem 'pry-byebug'
