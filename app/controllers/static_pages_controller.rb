@@ -6,12 +6,15 @@ class StaticPagesController < ApplicationController
         details = TheTvDbApi.get_serie show['id']
         images = TheTvDbApi.get_serie_fanart show['id']
 
-        {
-          poster: images.first['fileName'],
+        serie = {
           name: show['seriesName'],
           overview: show['overview'],
           genre: details['genre'].join(', ')
         }
+        if images.present?
+          serie.merge! poster: images.first['fileName']
+        end
+        serie
       end
 
     end
