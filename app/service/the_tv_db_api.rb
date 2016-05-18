@@ -1,6 +1,7 @@
 class TheTvDbApi
   BASE_URL = 'https://api.thetvdb.com'
 
+  ## Authentication Methods
   def self.request_token
     response = connection.post do |req|
       req.url '/login'
@@ -22,24 +23,40 @@ class TheTvDbApi
   end
 
   def self.refresh_token
-    response = get_response '/refresh_token'
+    get_response '/refresh_token'
+    JwtToken.last.update_attribute(
+        expiration_date: 23.hours.from_now
+      )
   end
 
+  ## Search for a particular series
+  def self.search query
+    url = "search/series?name=#{URI.encode query}"
+    series = get_response url
+  end
+
+  ## Others
   def self.update_series
     from_date = 65.minutes.ago.to_i
     url = "/updated/query?fromTime=#{from_date}"
-    response = get_response url
+    series = get_response url
 
-    series = JSON::parse(response.body)['data']
     series.each do |serie|
       serie_info = get_serie serie['id']
     end
-    binding.pry
   end
 
   def self.get_serie serie_id
-    response = get_response "/series/#{series_id}"
-    JSON::parse(response.body)['data']
+    response = get_response "/series/#{serie_id}"
+  end
+
+  def self.get_serie_actors serie_id
+    response = get_response "/series/#{serie_id}/actors"
+  end
+
+  def self.get_serie_fanart serie_id
+    url = "series/#{serie_id}/images/query?keyType=fanart&resolution=1920x1080"
+    response = get_response url
   end
 
   private
@@ -52,10 +69,11 @@ class TheTvDbApi
 
   def self.get_response url
     token = JwtToken.last.token
-    connection.get do |req|
+    response = connection.get do |req|
       req.url url
       req.headers['Accept'] = 'application/json'
       req.headers['Authorization'] = "Bearer #{token}"
     end
+    JSON::parse(response.body)['data']
   end
 end

@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'whenever'
+gem 'carrierwave'
+gem 'carrierwave-aws'
 
 gem 'omdb-api'
 gem 'trakt_api'
