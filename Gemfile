@@ -9,8 +9,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'whenever'
+
 gem 'omdb-api'
+gem 'trakt_api'
+gem 'faraday'
+
 gem 'puma'
 gem 'slim-rails'
 gem 'twitter-typeahead-rails'
@@ -29,4 +33,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :doc do
+  gem 'sdoc', '~> 0.4.0'
 end

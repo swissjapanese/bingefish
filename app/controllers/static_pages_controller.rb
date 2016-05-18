@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
       @shows =
         Show.
           where("lower(title) like '%#{@query.downcase}%'").
+          where(show_type: 'series').
           order(year: :desc).
           page params[:page]
     end
