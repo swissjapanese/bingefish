@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
           genre: details['genre'].join(', ')
         }
         if images.present?
-          serie.merge! poster: images.first['fileName']
+          serie.merge! poster: images.last['fileName']
         end
         serie
       end

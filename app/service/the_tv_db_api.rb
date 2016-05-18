@@ -55,7 +55,7 @@ class TheTvDbApi
   end
 
   def self.get_serie_fanart serie_id
-    url = "series/#{serie_id}/images/query?keyType=fanart&resolution=1920x1080"
+    url = "series/#{serie_id}/images/query?keyType=poster"
     response = get_response url
   end
 
