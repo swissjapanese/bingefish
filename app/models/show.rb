@@ -8,6 +8,6 @@ class Show < ActiveRecord::Base
   paginates_per 25
 
   def poster_url
-    poster.present? ? poster : "http://placehold.it/300x400"
+    show_images.last.present? ? show_images.last.image_url : "http://placehold.it/300x400"
   end
 end
