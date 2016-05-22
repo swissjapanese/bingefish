@@ -16,11 +16,13 @@ class StaticPagesController < ApplicationController
               genre: details['genre'].join[', ']
             )
 
-          ShowImage.create(
-              image_type: 'poster',
-              remote_image_url: "http://www.thetvdb.com/banners/#{images.last['fileName']}",
-              show: serie
-            )
+          if images.present?
+            ShowImage.create(
+                image_type: 'poster',
+                remote_image_url: "http://www.thetvdb.com/banners/#{images.last['fileName']}",
+                show: serie
+              )
+          end
         end
 
         serie
