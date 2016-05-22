@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522002501) do
+ActiveRecord::Schema.define(version: 20160522005121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 20160522002501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "show_images", force: :cascade do |t|
+    t.text     "image_type"
+    t.text     "image"
+    t.integer  "show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shows", force: :cascade do |t|
     t.text     "imdb_id"
     t.text     "title"
@@ -81,6 +89,7 @@ ActiveRecord::Schema.define(version: 20160522002501) do
     t.text     "season"
     t.text     "episode"
     t.text     "series_id"
+    t.integer  "tvdb_id"
   end
 
 end

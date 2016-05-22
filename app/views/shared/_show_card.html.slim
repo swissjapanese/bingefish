@@ -1,19 +1,19 @@
 .card-container.row
   .col-md-3
-    image.search-card-poster src="http://www.thetvdb.com/banners/#{show[:poster]}"
+    image.search-card-poster src=show.show_images.last.image_url
   .col-md-8.card-details
     .row.card-detail
       .card-label.col-md-3
         | Title
       .card-value.col-md-9
-        = "#{show[:name]}"
+        = show.title
     .row.card-detail
       .card-label.col-md-3
         | Genre
       .card-value.col-md-9
-        = show[:genre]
+        = show.genre
     .row.card-detail
       .card-label.col-md-3
         | Overview
       .card-value.col-md-9
-        = show[:overview]
+        = show.plot
