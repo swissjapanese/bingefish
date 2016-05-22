@@ -11,16 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518115017) do
+ActiveRecord::Schema.define(version: 20160522002501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actors", force: :cascade do |t|
+    t.text     "first_name"
+    t.text     "middle_name"
+    t.text     "last_name"
+    t.text     "photo"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "casts", force: :cascade do |t|
+    t.integer  "actor_id"
+    t.integer  "show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.integer  "show_id"
+    t.integer  "season_id"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "jwt_tokens", force: :cascade do |t|
     t.text     "token"
     t.date     "expiration_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer  "show_id"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shows", force: :cascade do |t|
