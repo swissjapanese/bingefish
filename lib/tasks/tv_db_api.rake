@@ -3,4 +3,8 @@ namespace :tv_db_api do
   task refresh_jwt_token: :environment do
     TheTvDbApi.refresh_token
   end
+
+  desc 'get_lates_updates'
+  task get_lates_updates: :environment do
+  end
 end
