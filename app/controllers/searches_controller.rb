@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class SearchesController < ApplicationController
   def index
     @query = params[:query]
     if @query.present?
