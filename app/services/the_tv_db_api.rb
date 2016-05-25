@@ -24,7 +24,7 @@ class TheTvDbApi
 
   def self.refresh_token
     get_response '/refresh_token'
-    JwtToken.last.update_attribute(
+    JwtToken.last.update_attributes(
         expiration_date: 23.hours.from_now
       )
   end
