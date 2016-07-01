@@ -36,6 +36,8 @@ class TvDbImporter
     # get and create seasons for said show
     fetch_seasons tvdb_id
     fetch_actors tvdb_id
+
+    show
   end
 
   def self.fetch_seasons tvdb_id

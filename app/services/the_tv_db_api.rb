@@ -42,7 +42,11 @@ class TheTvDbApi
     series = get_response url
 
     series.each do |serie|
-      serie_info = get_serie serie['id']
+      show = Show.find_by tvdb_id: serie['id']
+      if show.nil? || show.lastupdated != serie['lastUpdated'].to_i
+        TvDbImporter.fetch_show serie['id']
+        sleep 1
+      end
     end
   end
 
