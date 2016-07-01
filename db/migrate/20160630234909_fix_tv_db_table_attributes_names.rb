@@ -12,12 +12,13 @@ class FixTvDbTableAttributesNames < ActiveRecord::Migration
     rename_column :shows, :Airs_DayOfWeek, :airs_day_of_week
     rename_column :shows, :Airs_Time, :airs_time
     rename_column :shows, :Rating, :rating
+    rename_column :shows, :Runtime, :runtime
     rename_column :shows, :IMDB_ID, :imdb_id
 
     # #seasons
     rename_column :seasons, :seriesid, :show_id
 
-    # #episodes
+    # # #episodes
     rename_column :episodes, :seriesid, :show_id
     rename_column :episodes, :seasonid, :season_id
     rename_column :episodes, :EpisodeNumber, :episode_number

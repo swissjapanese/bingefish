@@ -7,3 +7,7 @@ end
 every 1.hours do
   rake 'tv_db_api:get_lates_updates'
 end
+
+every 1.hours do
+  rake 'trakt_tv_api:update_popular_shows'
+end

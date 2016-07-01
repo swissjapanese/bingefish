@@ -46,23 +46,30 @@ class TheTvDbApi
     end
   end
 
-  def self.get_serie serie_id
+  def self.get_show serie_id
     response = get_response "/series/#{serie_id}"
   end
 
-  def self.get_serie_episodes serie_id
-    response = get_response "/series/#{serie_id}/episodes"
+  def self.get_seasons serie_id
+    get_response "/series/#{serie_id}/episodes/summary"
   end
 
-  def self.get_serie_actors serie_id
-    response = get_response "/series/#{serie_id}/actors"
+  def self.get_serie_episodes serie_id
+    get_response "/series/#{serie_id}/episodes"
+  end
+
+  def self.get_episodes_by_season serie_id, season_number
+    get_response "/series/#{serie_id}/episodes/query?airedSeason=#{season_number}"
+  end
+
+  def self.get_actors serie_id
+    get_response "/series/#{serie_id}/actors"
   end
 
   def self.get_serie_fanart serie_id
     url = "series/#{serie_id}/images/query?keyType=poster"
     response = get_response url
   end
-
 
   private
   def self.connection

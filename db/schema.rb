@@ -11,18 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630234909) do
+ActiveRecord::Schema.define(version: 20160701171420) do
 
   create_table "actors", force: :cascade do |t|
-    t.integer  "show_id",      limit: 4,               null: false
-    t.string   "name",         limit: 255
-    t.string   "role",         limit: 255
-    t.integer  "sort_order",   limit: 2,   default: 3, null: false
-    t.string   "image",        limit: 255
-    t.integer  "ImageAuthor",  limit: 4
+    t.integer  "show_id",     limit: 4,               null: false
+    t.string   "name",        limit: 255
+    t.string   "role",        limit: 255
+    t.integer  "sort_order",  limit: 2,   default: 3, null: false
+    t.string   "image",       limit: 255
+    t.integer  "ImageAuthor", limit: 4
     t.datetime "ImageAdded"
-    t.datetime "LastUpdate",                           null: false
-    t.integer  "LastUpdateBy", limit: 4,               null: false
   end
 
   add_index "actors", ["show_id"], name: "SeriesID", using: :btree
@@ -105,44 +103,34 @@ ActiveRecord::Schema.define(version: 20160630234909) do
     t.integer  "DVD_season",         limit: 4
     t.decimal  "DVD_episodenumber",                precision: 10, scale: 1
     t.integer  "DVD_chapter",        limit: 4
-    t.string   "locked",             limit: 3,                              default: "no",      null: false
+    t.string   "locked",             limit: 3,                              default: "no"
     t.integer  "absolute_number",    limit: 4
     t.string   "filename",           limit: 255
     t.integer  "show_id",            limit: 4,                                                  null: false
-    t.integer  "lastupdatedby",      limit: 4,                              default: 0,         null: false
+    t.integer  "lastupdatedby",      limit: 4,                              default: 0
     t.string   "airsafter_season",   limit: 10
     t.integer  "airsbefore_season",  limit: 4
     t.integer  "airsbefore_episode", limit: 4
-    t.integer  "thumb_author",       limit: 4,                              default: 1,         null: false
+    t.integer  "thumb_author",       limit: 4,                              default: 1
     t.datetime "thumb_added"
     t.integer  "thumb_width",        limit: 2
     t.integer  "thumb_height",       limit: 2
     t.integer  "tms_export",         limit: 8
-    t.datetime "mirrorupdate",                                                                  null: false
-    t.integer  "lockedby",           limit: 4,                                                  null: false
+    t.integer  "lockedby",           limit: 4
     t.string   "imdb_id",            limit: 25
     t.integer  "ep_img_flag",        limit: 1
     t.integer  "tms_review_by",      limit: 4
     t.date     "tms_review_date"
-    t.boolean  "tms_review_blurry",                                         default: false,     null: false
-    t.boolean  "tms_review_dark",                                           default: false,     null: false
-    t.boolean  "tms_review_logo",                                           default: false,     null: false
-    t.boolean  "tms_review_other",                                          default: false,     null: false
-    t.boolean  "tms_review_unsure",                                         default: false,     null: false
-    t.binary   "tms_priority",       limit: 1,                              default: "b'0'",    null: false
+    t.boolean  "tms_review_blurry",                                         default: false
+    t.boolean  "tms_review_dark",                                           default: false
+    t.boolean  "tms_review_logo",                                           default: false
+    t.boolean  "tms_review_other",                                          default: false
+    t.boolean  "tms_review_unsure",                                         default: false
   end
 
-  add_index "episodes", ["filename"], name: "filename", using: :btree
   add_index "episodes", ["first_aired"], name: "FirstAired", using: :btree
-  add_index "episodes", ["imdb_id"], name: "IMDB_ID", unique: true, using: :btree
-  add_index "episodes", ["lastupdated"], name: "lastupdated", using: :btree
-  add_index "episodes", ["mirrorupdate"], name: "mirrorupdate", using: :btree
   add_index "episodes", ["season_id"], name: "seasonid", using: :btree
   add_index "episodes", ["show_id"], name: "seriesid", using: :btree
-  add_index "episodes", ["tms_export"], name: "tms_export", using: :btree
-  add_index "episodes", ["tms_export"], name: "tms_export_2", using: :btree
-  add_index "episodes", ["tms_export"], name: "tms_export_3", using: :btree
-  add_index "episodes", ["tms_priority"], name: "tms_priority", using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string "genre", limit: 100, null: false
@@ -185,58 +173,57 @@ ActiveRecord::Schema.define(version: 20160630234909) do
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.integer  "show_id",       limit: 4,                 null: false
-    t.integer  "season",        limit: 4,                 null: false
-    t.integer  "bannerrequest", limit: 4, default: 0
-    t.string   "locked",        limit: 3, default: "no",  null: false
-    t.datetime "mirrorupdate",                            null: false
-    t.integer  "lockedby",      limit: 4,                 null: false
-    t.boolean  "tms_wanted",              default: false, null: false
+    t.integer "show_id",       limit: 4,                 null: false
+    t.integer "season",        limit: 4,                 null: false
+    t.integer "bannerrequest", limit: 4, default: 0
+    t.string  "locked",        limit: 3, default: "no"
+    t.integer "lockedby",      limit: 4
+    t.boolean "tms_wanted",              default: false
   end
 
-  add_index "seasons", ["mirrorupdate"], name: "mirrorupdate", using: :btree
   add_index "seasons", ["show_id", "season"], name: "uniqueseason", unique: true, using: :btree
   add_index "seasons", ["show_id"], name: "seriesid", using: :btree
 
   create_table "shows", force: :cascade do |t|
-    t.string   "series_name",      limit: 255,                   null: false
-    t.string   "series_id",        limit: 45
-    t.string   "status",           limit: 100
-    t.string   "first_aired",      limit: 100
-    t.string   "network",          limit: 100
-    t.integer  "NetworkID",        limit: 4
-    t.string   "Runtime",          limit: 100
-    t.string   "genre",            limit: 100
-    t.text     "actors",           limit: 65535
-    t.text     "overview",         limit: 65535
-    t.integer  "bannerrequest",    limit: 4,     default: 0
-    t.integer  "lastupdated",      limit: 4
-    t.string   "airs_day_of_week", limit: 45
-    t.string   "airs_time",        limit: 45
-    t.string   "rating",           limit: 45
-    t.integer  "flagged",          limit: 4,     default: 0
-    t.integer  "forceupdate",      limit: 4,     default: 0
-    t.integer  "hits",             limit: 4,     default: 0
-    t.integer  "updateID",         limit: 4,     default: 0,     null: false
-    t.string   "requestcomment",   limit: 255,   default: "",    null: false
-    t.string   "locked",           limit: 3,     default: "no",  null: false
-    t.datetime "mirrorupdate",                                   null: false
-    t.integer  "lockedby",         limit: 4,                     null: false
-    t.string   "autoimport",       limit: 16
-    t.string   "disabled",         limit: 3,     default: "No",  null: false
-    t.string   "imdb_id",          limit: 25
-    t.string   "zap2it_id",        limit: 12
+    t.string   "series_name",       limit: 255,                                           null: false
+    t.string   "series_id",         limit: 45
+    t.string   "status",            limit: 100
+    t.string   "first_aired",       limit: 100
+    t.string   "network",           limit: 100
+    t.integer  "NetworkID",         limit: 4
+    t.string   "runtime",           limit: 100
+    t.string   "genre",             limit: 100
+    t.text     "actors",            limit: 65535
+    t.text     "overview",          limit: 65535
+    t.integer  "bannerrequest",     limit: 4,                             default: 0
+    t.integer  "lastupdated",       limit: 4
+    t.string   "airs_day_of_week",  limit: 45
+    t.string   "airs_time",         limit: 45
+    t.string   "rating",            limit: 45
+    t.integer  "flagged",           limit: 4,                             default: 0
+    t.integer  "forceupdate",       limit: 4,                             default: 0
+    t.integer  "hits",              limit: 4,                             default: 0
+    t.integer  "updateID",          limit: 4,                             default: 0
+    t.string   "requestcomment",    limit: 255,                           default: ""
+    t.string   "locked",            limit: 3,                             default: "no"
+    t.integer  "lockedby",          limit: 4
+    t.string   "autoimport",        limit: 16
+    t.string   "disabled",          limit: 3,                             default: "No"
+    t.string   "imdb_id",           limit: 25
+    t.string   "zap2it_id",         limit: 12
     t.datetime "added"
-    t.integer  "addedBy",          limit: 4
-    t.boolean  "tms_wanted_old",                 default: false, null: false
-    t.integer  "tms_priority",     limit: 4,     default: 0,     null: false
-    t.integer  "tms_wanted",       limit: 1
+    t.integer  "addedBy",           limit: 4
+    t.boolean  "tms_wanted_old",                                          default: false
+    t.integer  "tms_priority",      limit: 4,                             default: 0
+    t.integer  "tms_wanted",        limit: 1
+    t.integer  "popularity_rank",   limit: 4
+    t.integer  "tvdb_id",           limit: 4
+    t.decimal  "site_rating",                     precision: 5, scale: 2
+    t.integer  "site_rating_count", limit: 4
   end
 
-  add_index "shows", ["disabled"], name: "disabled", using: :btree
   add_index "shows", ["imdb_id"], name: "IMDB_ID", unique: true, using: :btree
   add_index "shows", ["lastupdated"], name: "lastupdated", using: :btree
-  add_index "shows", ["mirrorupdate"], name: "mirrorupdate", using: :btree
   add_index "shows", ["network"], name: "Network", using: :btree
   add_index "shows", ["series_id"], name: "SeriesID", unique: true, using: :btree
   add_index "shows", ["series_name"], name: "SeriesName", type: :fulltext
