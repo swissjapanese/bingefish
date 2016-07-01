@@ -1,5 +1,5 @@
 class TheTvDbApi
-  BASE_URL = 'https://api.thetvdb.com'
+  BASE_URL = 'https://api.thetvdb.com'.freeze
 
   ## Authentication Methods
   def self.request_token
@@ -15,7 +15,7 @@ class TheTvDbApi
         }.to_json
     end
 
-    jwt_token = JSON::parse(response.body)['token']
+    jwt_token = response.body['token']
     JwtToken.create(
         token: jwt_token,
         expiration_date: 23.hours.from_now
@@ -50,6 +50,10 @@ class TheTvDbApi
     response = get_response "/series/#{serie_id}"
   end
 
+  def self.get_serie_episodes serie_id
+    response = get_response "/series/#{serie_id}/episodes"
+  end
+
   def self.get_serie_actors serie_id
     response = get_response "/series/#{serie_id}/actors"
   end
@@ -59,11 +63,13 @@ class TheTvDbApi
     response = get_response url
   end
 
+
   private
   def self.connection
-    Faraday.new(url: BASE_URL) do |faraday|
+    @connection ||= Faraday.new(url: BASE_URL) do |faraday|
       faraday.response :logger
       faraday.adapter  Faraday.default_adapter
+      faraday.response :json
     end
   end
 
@@ -74,6 +80,6 @@ class TheTvDbApi
       req.headers['Accept'] = 'application/json'
       req.headers['Authorization'] = "Bearer #{token}"
     end
-    JSON::parse(response.body)['data']
+    response.body['data']
   end
 end

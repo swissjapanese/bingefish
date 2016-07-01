@@ -127,12 +127,12 @@ GEM
     multi_json (1.11.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mysql2 (0.4.4)
     netrc (0.7.9)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     omdb-api (0.1.0)
       rest_client
-    pg (0.18.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -172,6 +172,8 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rest_client (1.8.3)
       netrc (~> 0.7.7)
     rollbar (2.11.3)
@@ -270,11 +272,12 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mysql2
   omdb-api
-  pg
   pry-byebug
   puma
   rails (= 4.2.6)
+  rest-client
   rollbar
   rspec-rails
   sass-rails (~> 5.0)

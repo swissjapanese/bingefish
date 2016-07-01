@@ -1,5 +1,4 @@
 class ShowImporter
-
   def self.import_tsv(file_path)
     first = true
     i = 0
