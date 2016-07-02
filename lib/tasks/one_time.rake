@@ -15,6 +15,6 @@ namespace :one_time do
   desc 'updates from the last 6 months'
   task get_huge_update: :environment do
     from_date = 7.months.ago.to_i
-    TheTvDbApi.delay.update_series from_date
+    TheTvDbApi.delay.update_series(from_date)
   end
 end

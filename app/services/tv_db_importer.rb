@@ -83,6 +83,8 @@ class TvDbImporter
 
   def self.fetch_actors tvdb_id
     actors = TheTvDbApi.get_actors(tvdb_id)
+    return if actors.blank?
+
     actors.each do |actor_info|
       actor = Actor.find_by show_id: tvdb_id, role: actor_info['role']
       actor_params = {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701171420) do
+ActiveRecord::Schema.define(version: 20160702055020) do
 
   create_table "actors", force: :cascade do |t|
     t.integer  "show_id",     limit: 4,               null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20160701171420) do
 
   create_table "episodes", force: :cascade do |t|
     t.integer  "season_id",          limit: 4,                              default: 0,         null: false
-    t.integer  "episode_number",     limit: 4,                              default: 0,         null: false
+    t.integer  "episode_number",     limit: 4,                              default: 0
     t.string   "episode_name",       limit: 255,                            default: "Unknown"
     t.string   "first_aired",        limit: 45
     t.text     "guest_stars",        limit: 65535
@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 20160701171420) do
 
   create_table "seasons", force: :cascade do |t|
     t.integer "show_id",       limit: 4,                 null: false
-    t.integer "season",        limit: 4,                 null: false
+    t.integer "season",        limit: 4
     t.integer "bannerrequest", limit: 4, default: 0
     t.string  "locked",        limit: 3, default: "no"
     t.integer "lockedby",      limit: 4
@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20160701171420) do
   add_index "seasons", ["show_id"], name: "seriesid", using: :btree
 
   create_table "shows", force: :cascade do |t|
-    t.string   "series_name",       limit: 255,                                           null: false
+    t.string   "series_name",       limit: 255
     t.string   "series_id",         limit: 45
     t.string   "status",            limit: 100
     t.string   "first_aired",       limit: 100
@@ -222,13 +222,11 @@ ActiveRecord::Schema.define(version: 20160701171420) do
     t.integer  "site_rating_count", limit: 4
   end
 
-  add_index "shows", ["imdb_id"], name: "IMDB_ID", unique: true, using: :btree
+  add_index "shows", ["imdb_id"], name: "IMDB_ID", using: :btree
   add_index "shows", ["lastupdated"], name: "lastupdated", using: :btree
   add_index "shows", ["network"], name: "Network", using: :btree
-  add_index "shows", ["series_id"], name: "SeriesID", unique: true, using: :btree
   add_index "shows", ["series_name"], name: "SeriesName", type: :fulltext
   add_index "shows", ["tms_priority"], name: "tms_priority", using: :btree
-  add_index "shows", ["zap2it_id"], name: "zap2it_id", unique: true, using: :btree
 
   create_table "translation_episodename", force: :cascade do |t|
     t.integer  "episodeid",    limit: 4,   null: false
