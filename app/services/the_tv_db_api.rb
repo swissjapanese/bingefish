@@ -36,8 +36,8 @@ class TheTvDbApi
   end
 
   ## Others
-  def self.update_series
-    from_date = 65.minutes.ago.to_i
+  def self.update_series from_date = nil
+    from_date ||= 65.minutes.ago.to_i
     url = "/updated/query?fromTime=#{from_date}"
     series = get_response url
 
