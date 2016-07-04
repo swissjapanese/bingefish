@@ -20,6 +20,7 @@ gem 'omdb-api'
 gem 'trakt_api'
 gem 'faraday'
 gem 'rest-client'
+gem 'react-rails'
 
 gem 'puma'
 gem 'slim-rails'

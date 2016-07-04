@@ -9,18 +9,33 @@ html
     = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
     = csrf_meta_tags
   body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand href="#" Bingie
-        .navbar-collapse.collapse.navbar-responsive-collapse
+    .navbar.navbar-default.bingefish-nav
+      .container-fluid
+        .navbar-header
+          a.white-font.navbar-brand href='#' Bingefish
+
+        .collapse.navbar-collapse#navy-navbar
           ul.nav.navbar-nav
-            li= link_to "Some Link 1", "#"
-            li= link_to "Some Link 2", "#"
-            li= link_to "Some Link 3", "#"
+            li
+              a.white-font href='#'
+                span.glyphicon.glyphicon-home.navbar-icon
+                | Home
+            li
+              a.white-font href='#'
+                span.glyphicon.glyphicon-star.navbar-icon
+                | My Shows
+            li
+              a.white-font href='#'
+                span.glyphicon.glyphicon-search.navbar-icon
+                | Discover
+            li
+              a.white-font href='#'
+                span.glyphicon.glyphicon-comment.navbar-icon
+                | Community
+          form.navbar-form.navbar-right#navbar-search
+            .form-group
+              span.glyphicon.glyphicon-search.search-icon
+              input.form-control.search-form type='text' placeholder='Search'
 
     .container.main-container
       .row
@@ -28,4 +43,4 @@ html
           = yield
 
     footer
-      p.text-center &copy; Bingie Team 2016
+      p.text-center &copy; BingeFish Team 2016
