@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require twitter/typeahead
+//= require typewatch
 //= require react
 //= require react_ujs
 //= require components

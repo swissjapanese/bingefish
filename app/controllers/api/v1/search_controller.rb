@@ -7,8 +7,10 @@ module API::V1
         Show.
           where('series_name like ?', "%#{params[:query]}%").
           order(popularity_rank: :desc)
-      shows.map! { |show| SearchResultPresenter.prepare show }
-      render json: show.as_json, status: :ok
+      shows = shows.map do |show|
+        SearchResultPresenter.prepare show
+      end
+      render json: shows.as_json, status: :ok
     end
   end
 end
