@@ -1,15 +1,17 @@
 module API::V1
   class SearchController < ApplicationController
     def index
-      render json { }, status: :ok if params[:query].nil?
+      render json: { } and return if params[:query].blank?
 
       shows =
         Show.
           where('series_name like ?', "%#{params[:query]}%").
-          order(popularity_rank: :desc)
+          order(popularity_rank: :desc).
+          limit(30)
       shows = shows.map do |show|
         SearchResultPresenter.prepare show
       end
+
       render json: shows.as_json, status: :ok
     end
   end

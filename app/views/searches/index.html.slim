@@ -1,9 +1,1 @@
-#bloodhound-search-box.row
-  input#show-search-field.typehead.search-box type='text' placeholder='Search for your Favorite Movie or Show' value=@query
-
-- if @shows.present?
-  .search-results.row
-    - @shows.each do |show|
-      = render partial: 'shared/show_card', locals: { show: show }
-  / .search-pagination-container.row
-  /   = paginate @shows, theme: 'twitter-bootstrap-3', window: 2
+.search-results

@@ -1,3 +1,15 @@
+body {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.navbar {
+  border-radius: 0px !important;
+}
+
+.navbar-default {
+  border-color: rgba(0,0,0,0) !important;
+}
+
 .main-container {
   min-height: 400px;
 }
@@ -40,4 +52,22 @@
   background: -ms-linear-gradient(left, rgba(154,0,0,1) 0%, rgba(246,180,80,1) 99%, rgba(246,180,80,1) 100%);
   background: linear-gradient(to right, rgba(154,0,0,1) 0%, rgba(246,180,80,1) 99%, rgba(246,180,80,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a0000', endColorstr='#f6b450', GradientType=1 );
+}
+
+.icon {
+  .community-icon {
+
+  }
+
+  .seach-icon {
+
+  }
+
+  .star-icon {
+
+  }
+
+  .home-icon {
+
+  }
 }
