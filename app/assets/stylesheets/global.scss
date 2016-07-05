@@ -12,7 +12,11 @@ body {
 }
 
 .navbar-default {
-  border-color: rgba(0,0,0,0) !important;
+  border-style: none !important;
+}
+
+.navbar-item {
+  margin-top: 12px;
 }
 
 .main-container {
@@ -36,14 +40,17 @@ body {
 }
 
 #navbar-search {
+  margin-top: -10px;
+  margin-bottom: 5px;
+
   .search-icon {
     position: relative;
-    left: 25px;
-    top: 3px;
+    left: 10px;
+    top: 29px;
     opacity: 0.6;
   }
 
-  .search-form {
+  #nav-search {
     padding: 6px 12px 6px 30px;
   }
 }

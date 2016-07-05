@@ -12,10 +12,10 @@ html
   body
     .navbar.navbar-default.bingefish-nav
       .container-fluid
-        .navbar-header
+        .navbar-header.navbar-item
           a.white-font.navbar-brand href='#' Bingefish
 
-        .collapse.navbar-collapse#navy-navbar
+        .collapse.navbar-collapse.navbar-item#navy-navbar
           ul.nav.navbar-nav
             li
               a.white-font href='#'
@@ -33,10 +33,10 @@ html
               a.white-font href='#'
                 span.glyphicon.glyphicon-comment.navbar-icon
                 | Community
-          form.navbar-form.navbar-right#navbar-search
+          .navbar-right#navbar-search
             .form-group
               span.glyphicon.glyphicon-search.search-icon
-              input.form-control.search-form#nav-search type='text' placeholder='Search'
+              input.form-control#nav-search type='text' placeholder='Search'
 
     .main-container
       = yield
