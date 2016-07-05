@@ -38,10 +38,8 @@ html
               span.glyphicon.glyphicon-search.search-icon
               input.form-control.search-form#nav-search type='text' placeholder='Search'
 
-    .container.main-container
-      .row
-        .col-sm-10.col-sm-offset-1
-          = yield
+    .main-container
+      = yield
 
-    footer
+    footer.main-footer
       p.text-center &copy; BingeFish Team 2016
