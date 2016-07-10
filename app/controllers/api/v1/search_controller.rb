@@ -6,7 +6,7 @@ module API::V1
       shows =
         Show.
           where('series_name like ?', "%#{params[:query]}%").
-          order(popularity_rank: :desc).
+          order(popularity_rank: :asc).
           limit(28)
       shows = shows.map do |show|
         SearchResultPresenter.prepare show
