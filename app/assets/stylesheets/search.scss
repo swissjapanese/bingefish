@@ -2,20 +2,31 @@
   margin-bottom: 5px;
 
   .show-card {
+    height: 16em;
     width: 100%;
+    overflow: hidden;
     border-radius: 1px;
     border-color: rgb(221,221,221);
     border-style: solid;
     background-color: white;
 
-    .show-poster {
+    .show-fanart {
       width: 100%;
     }
 
-    .show-title {
-      height: 4em;
-      text-align: center;
-      padding: 7px;
+    .show-info {
+      height: 3em;
+
+      .show-overview {
+        display: none;
+      }
+
+      .show-title {
+        text-align: center;
+        padding: 7px;
+      }
     }
+
+
   }
 }

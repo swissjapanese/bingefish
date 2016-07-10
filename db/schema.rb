@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702055020) do
+ActiveRecord::Schema.define(version: 20160710133542) do
 
   create_table "actors", force: :cascade do |t|
     t.integer  "show_id",     limit: 4,               null: false
@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(version: 20160702055020) do
     t.integer  "tvdb_id",           limit: 4
     t.decimal  "site_rating",                     precision: 5, scale: 2
     t.integer  "site_rating_count", limit: 4
+    t.text     "fanart",            limit: 65535
   end
 
   add_index "shows", ["imdb_id"], name: "IMDB_ID", using: :btree

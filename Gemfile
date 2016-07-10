@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'daemons'
 gem 'rollbar'
+gem 'mini_magick'
 
 gem 'omdb-api'
 gem 'trakt_api'

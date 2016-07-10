@@ -1,5 +1,5 @@
 class TraktTvApi
-  BASE_URL = 'https://api-v2launch.trakt.tv'.freeze
+  BASE_URL = 'https://api.trakt.tv'.freeze
 
   def self.trending limit = 100, page = 1
     request BASE_URL + "/shows/trending?limit=#{limit}&page=#{page}"
@@ -7,6 +7,10 @@ class TraktTvApi
 
   def self.popular limit = 100, page = 1
     request BASE_URL + "/shows/popular?limit=#{limit}&page=#{page}"
+  end
+
+  def self.get_show imdb_id
+    request BASE_URL + "/shows/#{imdb_id}?extended=images"
   end
 
   def self.request url

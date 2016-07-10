@@ -17,4 +17,30 @@ namespace :one_time do
     from_date = 7.months.ago.to_i
     TheTvDbApi.delay.update_series(from_date)
   end
+
+  desc 'trakt image and popularity seed'
+  task trakt_image_and_popularity_seed: :environment do
+    50.times do |n|
+      TraktTvApi.popular(100, n + 1).each_with_index do |show, m|
+        puts "Importing top #{100*(n+1)} shows"
+        tvdb_id = show['ids']['tvdb']
+        show = Show.find_by tvdb_id: tvdb_id
+
+        if show.nil?
+          show = TvDbImporter.get_show tvdb_id
+        end
+
+        trakt = TraktTvApi.get_show show.imdb_id
+
+        popularity_rank = (n * 100) + m + 1
+        show.update_attributes(
+          popularity_rank: popularity_rank,
+          remote_fanart_url: trakt['images']['fanart']['full']
+          )
+      end
+
+      puts 'sleeping 60 seconds before getting the next batch'
+      sleep 60
+    end
+  end
 end
