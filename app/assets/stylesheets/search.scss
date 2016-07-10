@@ -23,6 +23,7 @@
       text-align: center;
 
       .show-overview {
+        display: none;
         padding: 0px 10px;
       }
 
@@ -36,5 +37,9 @@
     top: -5em;
     transition: 1s;
     min-height: 5em;
+
+    .show-overview {
+      display: block;
+    }
   }
 }

@@ -1,9 +1,7 @@
 @SearchResultItem = React.createClass
   mouseOver: ->
-    
 
   mouseOut: ->
-    
 
   render: ->
     React.DOM.div
