@@ -21,8 +21,8 @@ namespace :one_time do
   desc 'trakt image and popularity seed'
   task trakt_image_and_popularity_seed: :environment do
     50.times do |n|
+      puts "Importing top #{100*(n+1)} shows"
       TraktTvApi.popular(100, n + 1).each_with_index do |show, m|
-        puts "Importing top #{100*(n+1)} shows"
         tvdb_id = show['ids']['tvdb']
         show = Show.find_by tvdb_id: tvdb_id
 
@@ -37,10 +37,10 @@ namespace :one_time do
           popularity_rank: popularity_rank,
           remote_fanart_url: trakt['images']['fanart']['full']
           )
+        puts "finished importing rank: #{popularity_rank}. sleeping."
+        sleep 10
       end
 
-      puts 'sleeping 60 seconds before getting the next batch'
-      sleep 60
     end
   end
 end
