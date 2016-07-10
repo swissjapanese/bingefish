@@ -23,14 +23,14 @@ namespace :one_time do
     50.times do |n|
       puts "Importing top #{100*(n+1)} shows"
       TraktTvApi.popular(100, n + 1).each_with_index do |show, m|
-        tvdb_id = show['ids']['tvdb']
-        show = Show.find_by tvdb_id: tvdb_id
-
-        if show.nil?
-          show = TvDbImporter.get_show tvdb_id
-        end
-
         begin
+          tvdb_id = show['ids']['tvdb']
+          show = Show.find_by tvdb_id: tvdb_id
+
+          if show.nil?
+            show = TvDbImporter.fetch_show tvdb_id
+          end
+
           trakt = TraktTvApi.get_show show.imdb_id
 
           popularity_rank = (n * 100) + m + 1

@@ -5,7 +5,7 @@ class TraktTvService
       show = Show.find_by tvdb_id: tvdb_id
 
       if show.nil?
-        show = TvDbImporter.get_show tvdb_id
+        show = TvDbImporter.fetch_show tvdb_id
       end
 
       show.update_attributes popularity_rank: n + 1

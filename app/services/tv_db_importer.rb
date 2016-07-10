@@ -1,6 +1,8 @@
 class TvDbImporter
   def self.fetch_show tvdb_id
     details = TheTvDbApi.get_show tvdb_id
+    return unless details.present?
+
     show = Show.find_by tvdb_id: tvdb_id
     show_params =
       {
