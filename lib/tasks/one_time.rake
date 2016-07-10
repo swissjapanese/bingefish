@@ -30,15 +30,19 @@ namespace :one_time do
           show = TvDbImporter.get_show tvdb_id
         end
 
-        trakt = TraktTvApi.get_show show.imdb_id
+        begin
+          trakt = TraktTvApi.get_show show.imdb_id
 
-        popularity_rank = (n * 100) + m + 1
-        show.update_attributes(
-          popularity_rank: popularity_rank,
-          remote_fanart_url: trakt['images']['fanart']['full']
-          )
-        puts "finished importing rank: #{popularity_rank}. sleeping."
-        sleep 10
+          popularity_rank = (n * 100) + m + 1
+          show.update_attributes(
+            popularity_rank: popularity_rank,
+            remote_fanart_url: trakt['images']['fanart']['full']
+            )
+          puts "finished importing rank: #{popularity_rank}. sleeping."
+          sleep 1
+        rescue Exception => ex
+          # do nothing
+        end
       end
 
     end

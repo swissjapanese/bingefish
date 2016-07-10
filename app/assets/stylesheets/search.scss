@@ -15,18 +15,26 @@
     }
 
     .show-info {
-      height: 3em;
+      position: relative;
+      background-color: white;
+      transition: 1s;
+      min-height: 3em;
+      top: 0px;
+      text-align: center;
 
       .show-overview {
-        display: none;
+        padding: 0px 10px;
       }
 
       .show-title {
-        text-align: center;
         padding: 7px;
       }
     }
+  }
 
-
+  .show-card:hover .show-info {
+    top: -5em;
+    transition: 1s;
+    min-height: 5em;
   }
 }
