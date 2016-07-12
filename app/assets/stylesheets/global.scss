@@ -19,8 +19,12 @@ body {
   margin-top: 12px;
 }
 
-.main-container {
+.main-container, .search-result-container {
   min-height: 400px;
+}
+
+.search-result-container {
+  display: none;
 }
 
 .search-box {
@@ -42,6 +46,7 @@ body {
 #navbar-search {
   margin-top: -10px;
   margin-bottom: 5px;
+  min-height: 70px;
 
   .search-icon {
     position: relative;
@@ -52,6 +57,13 @@ body {
 
   #nav-search {
     padding: 6px 12px 6px 30px;
+  }
+
+  .search-close {
+    position: relative;
+    top: 30px;
+    margin-right: 10px;
+    display: none;
   }
 }
 

@@ -13,6 +13,12 @@
       allowSubmit: false
       captureLength: 2
 
+    $('#navbar-search .search-close').on 'click', =>
+      $('.search-result-container').hide()
+      $('.main-container').show()
+      @setState shows: []
+
+
   loadSearchResults: (value) ->
     $.ajax
       url: 'api/v1/search'
@@ -22,6 +28,9 @@
       error: (error, status, statusText) ->
         alert('server problem :(')
       success: (data, status, jqhxr) =>
+        $('.search-result-container').show()
+        $('.main-container').hide()
+        $('#navbar-search .search-close').show()
         @setState shows: data
 
   render: ->

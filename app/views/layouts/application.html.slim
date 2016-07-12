@@ -35,11 +35,14 @@ html
                 | Community
           .navbar-right#navbar-search
             .form-group
+              a.close.search-close href='#' aria-label='close' &times;
               span.glyphicon.glyphicon-search.search-icon
               input.form-control#nav-search type='text' placeholder='Search'
 
     .main-container
       = yield
+    .search-result-container
+      = react_component 'SearchResults', { data: [] }
 
     footer.main-footer
       p.text-center &copy; BingeFish Team 2016
