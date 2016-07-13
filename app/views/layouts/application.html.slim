@@ -40,9 +40,10 @@ html
               input.form-control#nav-search type='text' placeholder='Search'
 
     .main-container
-      = yield
-    .search-result-container
-      = react_component 'SearchResults', { data: [] }
+      .search-result-container
+        = react_component 'SearchResults', { data: [] }
+      .page-container
+        = yield
 
     footer.main-footer
       p.text-center &copy; BingeFish Team 2016

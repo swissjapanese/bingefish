@@ -15,7 +15,7 @@
 
     $('#navbar-search .search-close').on 'click', =>
       $('.search-result-container').hide()
-      $('.main-container').show()
+      $('.page-container').fadeIn('slow')
       @setState shows: []
 
 
@@ -28,8 +28,9 @@
       error: (error, status, statusText) ->
         alert('server problem :(')
       success: (data, status, jqhxr) =>
-        $('.search-result-container').show()
-        $('.main-container').hide()
+        $('.page-container').hide()
+        $('.search-result-container').hide()
+        $('.search-result-container').fadeIn('slow')
         $('#navbar-search .search-close').show()
         @setState shows: data
 
