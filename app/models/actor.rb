@@ -1,3 +1,3 @@
-class Actor < ActiveRecord::Base
+class Actor < ApplicationRecord
   belongs_to :shows
 end

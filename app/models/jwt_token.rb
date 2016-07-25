@@ -1,2 +1,2 @@
-class JwtToken < ActiveRecord::Base
+class JwtToken < ApplicationRecord
 end

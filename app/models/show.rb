@@ -1,4 +1,4 @@
-class Show < ActiveRecord::Base
+class Show < ApplicationRecord
   has_many :seasons
   has_many :episodes
   has_many :actors
