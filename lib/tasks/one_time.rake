@@ -14,13 +14,13 @@ namespace :one_time do
 
   desc 'updates from the last 6 months'
   task get_huge_update: :environment do
-    from_date = 7.months.ago.to_i
+    from_date = 8.months.ago.to_i
     TheTvDbApi.delay.update_series(from_date)
   end
 
   desc 'trakt image and popularity seed'
   task trakt_image_and_popularity_seed: :environment do
-    50.times do |n|
+    250.times do |n|
       puts "Importing top #{100*(n+1)} shows"
       TraktTvApi.popular(100, n + 1).each_with_index do |show, m|
         begin
@@ -36,7 +36,11 @@ namespace :one_time do
           popularity_rank = (n * 100) + m + 1
           show.update_attributes(
             popularity_rank: popularity_rank,
-            remote_fanart_url: trakt['images']['fanart']['full']
+            remote_fanart_url: trakt['images']['fanart']['full'],
+            remote_clearart_url: trakt['images']['clearart']['full'],
+            remote_poster_url: trakt['images']['poster']['full'],
+            remote_logo_url: trakt['images']['logo']['full'],
+            remote_banner_url: trakt['images']['banner']['full']
             )
           puts "finished importing rank: #{popularity_rank}. sleeping."
           sleep 1

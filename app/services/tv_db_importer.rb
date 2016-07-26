@@ -1,7 +1,7 @@
 class TvDbImporter
   def self.fetch_show tvdb_id
     details = TheTvDbApi.get_show tvdb_id
-    return unless details.present?
+    return if details.blank? && details['seriesName'].blank?
 
     show = Show.find_by tvdb_id: tvdb_id
     show_params =
@@ -27,13 +27,19 @@ class TvDbImporter
       }
 
     if show.nil?
+      trakt = TraktTvApi.get_show show.imdb_id
+      show_params.merge!({
+          remote_fanart_url: trakt['images']['fanart']['full'],
+          remote_clearart_url: trakt['images']['clearart']['full'],
+          remote_poster_url: trakt['images']['poster']['full'],
+          remote_logo_url: trakt['images']['logo']['full'],
+          remote_banner_url: trakt['images']['banner']['full']
+        })
+
       show = Show.create(show_params)
     else
       show.update_attributes(show_params)
     end
-
-    # copy images for show
-    # fetch_images tvdb_id
 
     # get and create seasons for said show
     fetch_seasons tvdb_id
@@ -43,14 +49,17 @@ class TvDbImporter
   end
 
   def self.fetch_seasons tvdb_id
+    seasons = TheTvDbApi.get_seasons(tvdb_id)
+    return if seasons.blank?
+
     seasons =
-      TheTvDbApi.
-        get_seasons(tvdb_id)['airedSeasons'].
+      seasons['airedSeasons'].
         map! { |a| a.to_i }.
         sort
     seasons.each do |number|
       season = Season.find_by show_id: tvdb_id, season: number
       if season.nil?
+        # TODO: get season images
         season = Season.create(show_id: tvdb_id, season: number)
       end
 
@@ -70,6 +79,7 @@ class TvDbImporter
             first_aired: episode_info['firstAired']
           }
         if episode.nil?
+          # TODO: get episode images
           Episode.create episode_params
         else
           episode.update_attributes episode_params
@@ -80,7 +90,14 @@ class TvDbImporter
   end
 
   def self.fetch_images tvdb_id
-    # upload images to s3
+    trakt = TraktTvApi.get_show show.imdb_id
+    show_params.merge!({
+        remote_fanart_url: trakt['images']['fanart']['full'],
+        remote_clearart_url: trakt['images']['clearart']['full'],
+        remote_poster_url: trakt['images']['poster']['full'],
+        remote_logo_url: trakt['images']['logo']['full'],
+        remote_banner_url: trakt['images']['banner']['full']
+      })
   end
 
   def self.fetch_actors tvdb_id
