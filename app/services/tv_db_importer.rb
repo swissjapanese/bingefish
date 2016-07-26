@@ -33,7 +33,8 @@ class TvDbImporter
           remote_clearart_url: trakt['images']['clearart']['full'],
           remote_poster_url: trakt['images']['poster']['full'],
           remote_logo_url: trakt['images']['logo']['full'],
-          remote_banner_url: trakt['images']['banner']['full']
+          remote_banner_url: trakt['images']['banner']['full'],
+          trakt_id: trakt['ids']['trakt']
         })
 
       show = Show.create(show_params)

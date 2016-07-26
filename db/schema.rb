@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726190112) do
+ActiveRecord::Schema.define(version: 20160726193111) do
 
   create_table "actors", unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.integer  "show_id",                           null: false
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20160726190112) do
     t.text     "banner",            limit: 65535
     t.text     "clearart",          limit: 65535
     t.text     "logo",              limit: 65535
+    t.integer  "trakt"
     t.index ["imdb_id"], name: "IMDB_ID", using: :btree
     t.index ["lastupdated"], name: "lastupdated", using: :btree
     t.index ["network"], name: "Network", using: :btree
