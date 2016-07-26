@@ -35,7 +35,7 @@ namespace :one_time do
 
           popularity_rank = (n * 100) + m + 1
           show.update_attributes(
-            trakt_id: trakt['ids']['trakt'],
+            trakt: trakt['ids']['trakt'],
             popularity_rank: popularity_rank,
             remote_fanart_url: trakt['images']['fanart']['full'],
             remote_clearart_url: trakt['images']['clearart']['full'],

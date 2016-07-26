@@ -1,7 +1,10 @@
 class TvDbImporter
   def self.fetch_show tvdb_id
     details = TheTvDbApi.get_show tvdb_id
-    return if details.blank? && details['seriesName'].blank?
+    return if details.blank? ||
+      details['imdbId'].blank? ||
+      details['seriesName'].blank? ||
+      details['seriesName'] =~ /^\*\*\* Duplicate/
 
     show = Show.find_by tvdb_id: tvdb_id
     show_params =
@@ -34,7 +37,7 @@ class TvDbImporter
           remote_poster_url: trakt['images']['poster']['full'],
           remote_logo_url: trakt['images']['logo']['full'],
           remote_banner_url: trakt['images']['banner']['full'],
-          trakt_id: trakt['ids']['trakt']
+          trakt: trakt['ids']['trakt']
         })
 
       show = Show.create(show_params)
