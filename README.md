@@ -1,15 +1,17 @@
-## Prerequisites
-This app assumes that you already have the following installed
-1. rbenv or RVM
-2. PostgreSQL
-3. Ruby 2.3.0 or newer
+## Requirements
+* git
+* ruby 2.3.1 or higher
+* postgresql
 
-## Setup
-1. pull the branch
-2. run `bundle`
-3. run `rake db:setup`
 
-That should have the app up and running on your local machine. Run `rails s` and visit the app at `localhost:3000`
+## Setup Guide
+* pull the repo locally
+* run `bundle install -j4` at the root of the directory location
+* run `mv config/application.yml.example config/application.yml`
+* populate `application.yml` with the required api keys and credentials
+* run `rails db:setup`
+* run `rails server`, you can then visit `htpp://localhost:3000`
+
 
 ## Contributing
 1. Pull the latest version of master
