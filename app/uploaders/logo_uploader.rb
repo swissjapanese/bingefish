@@ -1,4 +1,4 @@
-class LogoUploaderUploader < CarrierWave::Uploader::Base
+class LogoUploader < CarrierWave::Uploader::Base
   storage :aws
 
   def store_dir

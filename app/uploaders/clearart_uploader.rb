@@ -1,4 +1,4 @@
-class ClearartUploaderUploader < CarrierWave::Uploader::Base
+class ClearartUploader < CarrierWave::Uploader::Base
   storage :aws
 
   def store_dir
