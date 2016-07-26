@@ -27,7 +27,7 @@ class TvDbImporter
       }
 
     if show.nil?
-      trakt = TraktTvApi.get_show show.imdb_id
+      trakt = TraktTvApi.get_show details['imdbId']
       show_params.merge!({
           remote_fanart_url: trakt['images']['fanart']['full'],
           remote_clearart_url: trakt['images']['clearart']['full'],
