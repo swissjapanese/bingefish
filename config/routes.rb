@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       get 'search' => 'search#index'
+      get 'shows/:id' => 'shows#show'
     end
   end
 end
