@@ -78,6 +78,11 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a0000', endColorstr='#f6b450', GradientType=1 );
 }
 
+.clickable:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+
 .icon {
   .community-icon {
 

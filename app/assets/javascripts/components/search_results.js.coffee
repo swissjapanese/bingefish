@@ -21,7 +21,7 @@
 
   loadSearchResults: (value) ->
     $.ajax
-      url: 'api/v1/search'
+      url: '/api/search'
       method: 'GET'
       data:
         query: $('#nav-search').val()

@@ -1,4 +1,4 @@
-module API::V1
+module API
   class SearchController < ApplicationController
     def index
       render json: { } and return if params[:query].blank?

@@ -14,6 +14,7 @@ class DetailedShowPresenter
           trakt: show.trakt,
           imdb_id: show.imdb_id
         },
+      series_name: show.series_name,
       actors: actors,
       season_count: seasons.count,
       seasons: seasons,

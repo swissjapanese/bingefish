@@ -1,15 +1,11 @@
 @SearchResultItem = React.createClass
-  mouseOver: ->
-
-  mouseOut: ->
-
   render: ->
     React.DOM.div
       className: 'col-xs-6 col-sm-4 col-md-3 show-card-container'
       React.DOM.div
-        onMouseOver: @mouseOver
-        onMouseOut: @mouseOut
-        className: 'show-card'
+        className: 'show-card clickable'
+        onClick: =>
+          window.location = "/shows/#{@props.show.id}"
         React.DOM.img
           src: @props.show.fanart
           className: 'show-fanart'
