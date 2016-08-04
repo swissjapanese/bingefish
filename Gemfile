@@ -22,6 +22,8 @@ gem 'trakt_api'
 gem 'faraday'
 gem 'rest-client'
 gem 'react-rails'
+gem 'devise'
+gem 'omniauth-facebook'
 
 gem 'puma'
 gem 'slim-rails'

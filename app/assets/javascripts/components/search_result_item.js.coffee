@@ -6,6 +6,10 @@
         className: 'show-card clickable'
         onClick: =>
           window.location = "/shows/#{@props.show.id}"
+        React.DOM.div
+          className: 'binge-button-triangle'
+          React.DOM.span
+            className: 'glyphicon glyphicon-plus'
         React.DOM.img
           src: @props.show.fanart
           className: 'show-fanart'

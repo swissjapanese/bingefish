@@ -5,7 +5,6 @@ class ShowsController < ApplicationController
   end
 
   def show
-    @show = DetailedShowPresenter.prepare @show
   end
 
   private

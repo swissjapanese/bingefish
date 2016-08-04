@@ -1,3 +1,5 @@
+$red: rgb(208, 2, 27);
+
 .show-card-container {
   margin-bottom: 5px;
 
@@ -9,6 +11,7 @@
     border-color: rgb(221,221,221);
     border-style: solid;
     background-color: white;
+    position: relative;
 
     .show-fanart {
       width: 100%;
@@ -41,5 +44,24 @@
     .show-overview {
       display: block;
     }
+  }
+}
+
+.binge-button-triangle {
+  width: 0;
+  height: 0;
+  border-bottom: 60px solid transparent;
+  border-right:60px solid $red;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+  span {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 7px;
+    left: 30px;
   }
 }
