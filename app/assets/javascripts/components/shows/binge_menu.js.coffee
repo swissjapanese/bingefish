@@ -1,12 +1,40 @@
-@SearchResultItem = React.createClass
+@BingeMenu = React.createClass
+  getInitialState: ->
+    binge: false,
+    update: false,
+    watchlist: false,
+    guilty: false
+
   componentDidMount: ->
-    $("#bingemenu#{@props.show.id }").hide()
+    $("#bingemenu#{ @props.show.id }").hide()
+    $.ajax
+      method: 'GET'
+      url: "/api/show/#{@props.show.id}/status"
+      success: (data) =>
+        @setState data
+
+  handleUpdate: (type) ->
+    $.ajax
+      method: 'PUT'
+      url: "/api/show/#{@props.show.id}/status"
+      data:
+        binge_list:
+          "#{type}": !@state[type]
+      success: (data) =>
+        @setState data
+
+    @setState "#{type}": !@state[type]
 
   render: ->
     React.DOM.div
-      className: 'col-xs-6 col-sm-4 col-md-3 show-card-container'
+      className: ''
+      React.DOM.div
+        className: 'binge-menu-button clickable'
+        React.DOM.span
+          className: 'glyphicon glyphicon-plus'
+          onClick: (e) =>
+            $("#bingemenu#{@props.show.id }").fadeToggle()
 
-      # binge menu
       React.DOM.div
         id: "bingemenu#{@props.show.id }"
         className: 'binge-menu-container'
@@ -17,6 +45,8 @@
 
           React.DOM.div
             className: 'binge-button clickable'
+            onClick: =>
+              @handleUpdate('binge')
             React.DOM.div
               className: 'binge-button-icon'
               React.DOM.span
@@ -27,6 +57,8 @@
 
           React.DOM.div
             className: 'binge-button clickable'
+            onClick: =>
+              @handleUpdate('watchlist')
             React.DOM.div
               className: 'binge-button-icon'
               React.DOM.span
@@ -37,6 +69,8 @@
 
           React.DOM.div
             className: 'binge-button clickable'
+            onClick: =>
+              @handleUpdate('guilty')
             React.DOM.div
               className: 'binge-button-icon'
               React.DOM.span
@@ -44,31 +78,3 @@
             React.DOM.div
               className: 'binge-button-label'
               'shhhh'
-
-
-      # button for binge menu
-      React.DOM.div
-        className: 'binge-menu-button clickable'
-        React.DOM.span
-          className: 'glyphicon glyphicon-plus'
-          onClick: (e) =>
-            $("#bingemenu#{@props.show.id }").fadeToggle()
-
-      React.DOM.div
-        className: 'show-card clickable'
-
-        React.DOM.div
-          className: 'inner-show-card'
-          onClick: (e) =>
-            window.location = "/shows/#{@props.show.id}"
-          React.DOM.img
-            src: @props.show.fanart
-            className: 'show-fanart'
-          React.DOM.div
-            className: 'show-info'
-            React.DOM.div
-              className: 'show-title'
-              @props.show.series_name
-            React.DOM.div
-              className: 'show-overview'
-              @props.show.overview

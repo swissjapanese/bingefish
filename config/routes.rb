@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     get 'search' => 'search#index'
+
+    # show api
     get 'shows/:id' => 'shows#show'
+
+    # bingelist api
+    get 'show/:id/status' => 'binge_list#show'
+    put 'show/:id/status' => 'binge_list#update'
   end
 end

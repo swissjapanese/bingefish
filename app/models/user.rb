@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
           :omniauthable, omniauth_providers: [:facebook]
+  has_many :binge_lists
+  has_many :shows, through: :binge_lists
 
   def self.from_omniauth auth
     where(provider: auth.provider, uid: auth.uid).

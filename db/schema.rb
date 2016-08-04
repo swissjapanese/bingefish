@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804005944) do
+ActiveRecord::Schema.define(version: 20160804192828) do
 
   create_table "actors", unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.integer  "show_id",                           null: false
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20160804005944) do
     t.index ["mirrorupdate"], name: "mirrorupdate", using: :btree
     t.index ["subkey"], name: "subkey", using: :btree
     t.index ["userid"], name: "FK_banners_1", using: :btree
+  end
+
+  create_table "binge_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "user_id"
+    t.string   "show_id"
+    t.string   "integer"
+    t.boolean  "binge",      default: false
+    t.boolean  "watchlist",  default: false
+    t.boolean  "guilty",     default: false
+    t.boolean  "updated",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "countries", primary_key: "countryid", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|

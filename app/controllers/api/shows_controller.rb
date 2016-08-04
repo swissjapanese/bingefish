@@ -1,6 +1,6 @@
 module API
   class ShowsController < ApplicationController
-    before_action :set_show, only: [:show]
+    before_action :set_show
 
     def show
       render(
