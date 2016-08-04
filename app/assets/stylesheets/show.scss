@@ -1,4 +1,6 @@
 $red: rgb(208, 2, 27);
+$guilty-purple: rgb(144, 19, 254);
+$check-green: rgb(134, 214, 46);
 
 .show-card-container {
   margin-bottom: 5px;
@@ -47,21 +49,82 @@ $red: rgb(208, 2, 27);
   }
 }
 
-.binge-button-triangle {
+.img-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.binge-menu-button {
   width: 0;
   height: 0;
   border-bottom: 60px solid transparent;
   border-right:60px solid $red;
-
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 3px;
+  right: 18px;
+  z-index: 10;
 
   span {
     color: white;
     font-size: 20px;
     position: absolute;
-    top: 7px;
-    left: 30px;
+    top: 8px;
+    left: 33px;
+  }
+}
+
+.binge-menu-container {
+  height: 80px;
+  width: 240px;
+  background-color: white;
+  position: absolute;
+  z-index: 15;
+  right: 15px;
+  top: -83px;border-radius: 5px;
+  box-shadow: 0px 0px 10px black;
+  opacity: 0.95;
+
+  .binge-menu-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    position: absolute;
+    bottom: -10px;
+    right: 11px;
+  }
+
+  .binge-button-container {
+    display: inline-flex;
+  }
+
+  .binge-button {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .binge-button-icon {
+    font-size: 28px;
+    margin-top: 5px;
+
+    .guilty-button {
+      color: $guilty-purple;
+    }
+
+    .watch-button {
+      color: $red;
+    }
+
+    .add-binge-button {
+      color: $check-green;
+    }
   }
 }
