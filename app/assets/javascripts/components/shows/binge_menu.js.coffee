@@ -1,7 +1,7 @@
 @BingeMenu = React.createClass
   getInitialState: ->
     binge: false,
-    update: false,
+    updated: false,
     watchlist: false,
     guilty: false
 
@@ -31,13 +31,21 @@
     else
       'clean-button'
 
+  bingeMenuButtonClass: ->
+    if @state.updated
+      'glyphicon-ok'
+    else if @state.binge
+      'glyphicon-question-sign'
+    else
+      'glyphicon-plus'
+
   render: ->
     React.DOM.div
       className: ''
       React.DOM.div
         className: 'binge-menu-button clickable'
         React.DOM.span
-          className: 'glyphicon glyphicon-plus'
+          className: "glyphicon #{@bingeMenuButtonClass()}"
           onClick: (e) =>
             $("#bingemenu#{@props.show.id }").fadeToggle()
 

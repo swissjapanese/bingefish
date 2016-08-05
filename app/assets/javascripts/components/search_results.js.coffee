@@ -40,4 +40,4 @@
       React.DOM.div
         className: 'row'
         for show in @state.shows
-          React.createElement ShowItem, key: show.tvdb_id, show: show
+          React.createElement ShowItem, key: show.id, show: show

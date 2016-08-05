@@ -5,7 +5,7 @@ class BingeListItemPresenter
       binge: list.binge,
       updated: list.updated,
       watchlist: list.watchlist,
-      guiltied: list.guilty
+      guilty: list.guilty
     }
   end
 end

@@ -6,6 +6,7 @@ module API
     before_action :set_binge_list
 
     def show
+      headers['Last-Modified'] = Time.now.httpdate
       list = BingeListItemPresenter.prepare(@list)
       render json: list, status: :ok
     end
@@ -25,7 +26,7 @@ module API
     def set_binge_list
       @list =
         BingeList.
-          first_or_initialize(
+          find_or_initialize_by(
               user: current_user,
               show: @show
             )
