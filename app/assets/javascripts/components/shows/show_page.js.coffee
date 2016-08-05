@@ -14,4 +14,7 @@
           className: 'col-sm-3'
           React.DOM.div
             className: 'show-sidebar-container'
-            'Hello Side nav'
+            React.createElement(
+                ShowSidebar,
+                showId: @props.show.id
+              )

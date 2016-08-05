@@ -2,12 +2,9 @@
   render: ->
     React.DOM.div
       className: 'col-xs-6 col-sm-4 col-md-3 show-card-container'
-
-      React.createElement BingeMenuPopover, show: @props.show
-
+      React.createElement BingeMenuPopover, showId: @props.show.id
       React.DOM.div
         className: 'show-card clickable'
-
         React.DOM.div
           className: 'inner-show-card'
           onClick: (e) =>

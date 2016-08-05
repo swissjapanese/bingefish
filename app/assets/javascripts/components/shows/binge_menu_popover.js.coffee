@@ -3,10 +3,10 @@
     status: []
 
   componentDidMount: ->
-    $("#bingemenu#{ @props.show.id }").hide()
+    $("#bingemenu#{ @props.showId }").hide()
     $.ajax
       method: 'GET'
-      url: "/api/show/#{@props.show.id}/status"
+      url: "/api/show/#{@props.showId}/status"
       success: (data) =>
         @setState 'status': data
 
@@ -31,16 +31,21 @@
 
   render: ->
     React.DOM.div
-      className: ''
+      className: 'binge-menu-popover-container'
       React.DOM.div
         className: "binge-menu-button clickable #{@menuButtonClass()}"
         React.DOM.span
           className: "glyphicon #{@bingeMenuButtonClass()}"
           onClick: (e) =>
-            $("#bingemenu#{@props.show.id }").fadeToggle()
-      React.createElement(
-          BingeMenu,
-          show: @props.show,
-          status: @state.status,
-          handleUpdate: @handleUpdate
-        )
+            $("#bingemenu#{@props.showId }").fadeToggle()
+      React.DOM.div
+        id: "bingemenu#{@props.showId }"
+        className: 'binge-menu-container'
+        React.DOM.div
+          className: 'binge-menu-arrow'
+        React.createElement(
+            BingeMenu,
+            showId: @props.showId,
+            status: @state.status,
+            handleUpdate: @handleUpdate
+          )
