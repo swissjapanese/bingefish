@@ -105,16 +105,29 @@ $check-green: rgb(134, 214, 46);
   }
 
   .binge-button {
-    width: 70px;
-    height: 70px;
-    margin: 5px;
+    width: 80px;
+    height: 80px;
     text-align: center;
   }
 
-  .binge-button-icon {
-    font-size: 28px;
-    margin-top: 5px;
+  .binge {
+    color: white;
+    background-color: $check-green;
+    border-radius: 5px 0px 0px 5px;
+  }
 
+  .guilty {
+    color: white;
+    background-color: $guilty-purple;
+    border-radius: 0px 5px 5px 0px;
+  }
+
+  .watchlist {
+    color: white;
+    background-color: $red;
+  }
+
+  .clean-button {
     .guilty-button {
       color: $guilty-purple;
     }
@@ -126,5 +139,10 @@ $check-green: rgb(134, 214, 46);
     .add-binge-button {
       color: $check-green;
     }
+  }
+
+  .binge-button-icon {
+    font-size: 28px;
+    margin-top: 5px;
   }
 }

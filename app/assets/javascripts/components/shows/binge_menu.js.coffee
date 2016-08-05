@@ -25,6 +25,12 @@
 
     @setState "#{type}": !@state[type]
 
+  stateClass: (state) ->
+    if @state[state]
+      state
+    else
+      'clean-button'
+
   render: ->
     React.DOM.div
       className: ''
@@ -44,7 +50,7 @@
           className: 'binge-button-container'
 
           React.DOM.div
-            className: 'binge-button clickable'
+            className: "binge-button clickable #{@stateClass 'binge'}"
             onClick: =>
               @handleUpdate('binge')
             React.DOM.div
@@ -56,7 +62,7 @@
               'binged'
 
           React.DOM.div
-            className: 'binge-button clickable'
+            className: "binge-button clickable #{@stateClass 'watchlist'}"
             onClick: =>
               @handleUpdate('watchlist')
             React.DOM.div
@@ -68,7 +74,7 @@
               'watchlist'
 
           React.DOM.div
-            className: 'binge-button clickable'
+            className: "binge-button clickable #{@stateClass 'guilty'}"
             onClick: =>
               @handleUpdate('guilty')
             React.DOM.div
