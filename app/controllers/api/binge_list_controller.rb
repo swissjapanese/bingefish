@@ -13,7 +13,7 @@ module API
 
     def update
       @list.assign_attributes @list_params
-      @list.updated = true if @list_params['binge']
+      @list.updated = @list_params['binge'] unless @list_params['binge'].nil?
       if @list.save
         list = BingeListItemPresenter.prepare(@list)
         render json: list, status: :ok

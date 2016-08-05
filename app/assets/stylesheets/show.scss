@@ -63,7 +63,6 @@ $check-green: rgb(134, 214, 46);
   width: 0;
   height: 0;
   border-bottom: 60px solid transparent;
-  border-right:60px solid $red;
   position: absolute;
   top: 3px;
   right: 18px;
@@ -76,6 +75,14 @@ $check-green: rgb(134, 214, 46);
     top: 8px;
     left: 33px;
   }
+}
+
+.red-menu-button {
+  border-right:60px solid $red;
+}
+
+.green-menu-button {
+  border-right:60px solid $check-green;
 }
 
 .binge-menu-container {
