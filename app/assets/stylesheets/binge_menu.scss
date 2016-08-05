@@ -71,12 +71,10 @@ $check-green: rgb(134, 214, 46);
 
 // binge menu sidebar styles
 .binge-menu-sidebar-container {
-  width: 300px;
+  width: inherit;
   height: 100px;
-  margin: auto;
 
   .binge-button {
-    max-width: 100px;
     border: 1px solid rgb(221,221,221);
   }
 
@@ -89,7 +87,7 @@ $check-green: rgb(134, 214, 46);
 // binge menu constants
 .binge-button-container {
   display: inline-flex;
-  width: inherit;
+  width: 100%;
   height: inherit;
 }
 

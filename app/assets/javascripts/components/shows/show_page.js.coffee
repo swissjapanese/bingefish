@@ -5,13 +5,13 @@
       React.DOM.div
         className: 'row'
         React.DOM.div
-          className: 'col-md-8'
+          className: 'col-sm-8 col-lg-7 col-lg-offset-1'
           React.DOM.div
             className: 'show-comments-container'
             'Hello main menu'
 
         React.DOM.div
-          className: 'col-md-4'
+          className: 'col-sm-4 col-lg-3'
           React.DOM.div
             className: 'show-sidebar-container'
             React.createElement(
