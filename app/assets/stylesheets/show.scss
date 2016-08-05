@@ -1,7 +1,3 @@
-$red: rgb(208, 2, 27);
-$guilty-purple: rgb(144, 19, 254);
-$check-green: rgb(134, 214, 46);
-
 .show-card-container {
   margin-bottom: 5px;
 
@@ -59,97 +55,10 @@ $check-green: rgb(134, 214, 46);
   width: 100%;
 }
 
-.binge-menu-button {
-  width: 0;
-  height: 0;
-  border-bottom: 60px solid transparent;
-  position: absolute;
-  top: 3px;
-  right: 18px;
-  z-index: 10;
+.show-page-container {
+  padding: 40px;
 
-  span {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 8px;
-    left: 33px;
-  }
-}
-
-.red-menu-button {
-  border-right:60px solid $red;
-}
-
-.green-menu-button {
-  border-right:60px solid $check-green;
-}
-
-.binge-menu-container {
-  height: 80px;
-  width: 240px;
-  background-color: white;
-  position: absolute;
-  z-index: 15;
-  right: 15px;
-  top: -83px;border-radius: 5px;
-  box-shadow: 0px 0px 10px black;
-  opacity: 0.95;
-
-  .binge-menu-arrow {
-    width: 0; 
-    height: 0; 
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white;
-    position: absolute;
-    bottom: -10px;
-    right: 11px;
-  }
-
-  .binge-button-container {
-    display: inline-flex;
-  }
-
-  .binge-button {
-    width: 80px;
-    height: 80px;
-    text-align: center;
-  }
-
-  .binge {
-    color: white;
-    background-color: $check-green;
-    border-radius: 5px 0px 0px 5px;
-  }
-
-  .guilty {
-    color: white;
-    background-color: $guilty-purple;
-    border-radius: 0px 5px 5px 0px;
-  }
-
-  .watchlist {
-    color: white;
-    background-color: $red;
-  }
-
-  .clean-button {
-    .guilty-button {
-      color: $guilty-purple;
-    }
-
-    .watch-button {
-      color: $red;
-    }
-
-    .add-binge-button {
-      color: $check-green;
-    }
-  }
-
-  .binge-button-icon {
-    font-size: 28px;
-    margin-top: 5px;
+  .show-comments-container {
+    border: 1px solid red;
   }
 }

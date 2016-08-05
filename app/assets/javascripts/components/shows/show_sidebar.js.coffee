@@ -9,11 +9,17 @@
       success: (data) =>
         @setState 'status': data
 
+  handleStatusUpdate: (type) ->
+    status = @state.status
+    status[type] = !@state.status[type]
+    @setState "status": status
+
   render: ->
     React.DOM.div
-      className: 'show-sidebar-container'
+      className: 'binge-menu-sidebar-container'
       React.createElement(
           BingeMenu,
-          show: @props.show,
+          showId: @props.showId,
           status: @state.status
+          handleUpdate: @handleStatusUpdate
         )

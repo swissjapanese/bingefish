@@ -1,0 +1,133 @@
+$red: rgb(208, 2, 27);
+$guilty-purple: rgb(144, 19, 254);
+$check-green: rgb(134, 214, 46);
+
+// binge menu popup styles
+.binge-menu-button {
+  width: 0;
+  height: 0;
+  border-bottom: 60px solid transparent;
+  position: absolute;
+  top: 3px;
+  right: 18px;
+  z-index: 10;
+
+  span {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    left: 33px;
+  }
+}
+
+.red-menu-button {
+  border-right:60px solid $red;
+}
+
+.green-menu-button {
+  border-right:60px solid $check-green;
+}
+
+.binge-menu-container {
+  height: 80px;
+  width: 240px;
+  background-color: white;
+  position: absolute;
+  z-index: 15;
+  right: 15px;
+  top: -83px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px black;
+  opacity: 0.95;
+
+  .binge-menu-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    position: absolute;
+    bottom: -10px;
+    right: 11px;
+  }
+
+  .binge {
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  .guilty {
+    border-radius: 0px 5px 5px 0px;
+  }
+
+  .clean-button {
+    border-radius: 5px;
+  }
+
+  .binge-button-icon {
+    margin-top: 5px;
+  }
+}
+
+// binge menu sidebar styles
+.binge-menu-sidebar-container {
+  width: 100%;
+  height: 100px;
+
+  .binge-button {
+    border: 1px solid rgb(221,221,221);
+  }
+
+  .binge-button-icon {
+    margin-top: 18px;
+  }
+}
+
+
+// binge menu constants
+.binge-button-container {
+  display: inline-flex;
+  width: inherit;
+  height: inherit;
+}
+
+.binge-button {
+  text-align: center;
+  width: 33.33%;
+  height: 100%;
+}
+
+.binge-button-icon {
+  font-size: 28px;
+}
+
+.binge {
+  color: white;
+  background-color: $check-green;
+}
+
+.guilty {
+  color: white;
+  background-color: $guilty-purple;
+}
+
+.watchlist {
+  color: white;
+  background-color: $red;
+}
+
+.clean-button {
+  background-color: white;
+
+  .guilty-button {
+    color: $guilty-purple;
+  }
+
+  .watch-button {
+    color: $red;
+  }
+
+  .add-binge-button {
+    color: $check-green;
+  }
+}
