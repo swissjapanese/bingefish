@@ -22,11 +22,11 @@ $check-green: rgb(134, 214, 46);
 }
 
 .red-menu-button {
-  border-right:60px solid $red;
+  border-right: 60px solid $red;
 }
 
 .green-menu-button {
-  border-right:60px solid $check-green;
+  border-right: 60px solid $check-green;
 }
 
 .binge-menu-container {
@@ -71,10 +71,12 @@ $check-green: rgb(134, 214, 46);
 
 // binge menu sidebar styles
 .binge-menu-sidebar-container {
-  width: 100%;
+  width: 300px;
   height: 100px;
+  margin: auto;
 
   .binge-button {
+    max-width: 100px;
     border: 1px solid rgb(221,221,221);
   }
 
