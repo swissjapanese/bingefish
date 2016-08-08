@@ -10,7 +10,7 @@ html
     = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
     = csrf_meta_tags
   body
-    .navbar.navbar-default.bingefish-nav
+    div class="navbar navbar-default bingefish-nav #{ ( content_for? :header) ? 'nav-transparent' : 'nav-gradient' }"
       .container-fluid
         .navbar-header.navbar-item
           a.white-font.navbar-brand href='#' Bingefish
@@ -38,6 +38,14 @@ html
               a.close.search-close href='#' aria-label='close' &times;
               span.glyphicon.glyphicon-search.search-icon
               input.form-control#nav-search type='text' placeholder='Search'
+
+    - if content_for? :header
+      header.image-header
+        .show-image-overlay
+        img.show-image src=@header_image
+        .header-content
+          = yield :header
+      .header-spacer
 
     .main-container
       .search-result-container

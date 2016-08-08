@@ -5,6 +5,7 @@ class ShowsController < ApplicationController
   end
 
   def show
+    @header_image = @show.fanart.url
   end
 
   private

@@ -59,6 +59,42 @@
   padding: 40px;
 
   .show-comments-container {
-    border: 1px solid red;
+    background-color: white;
+    border: 1px solid rgb(221,221,221);
+    padding: 10px;
   }
+}
+
+.show-title-container, .show-episode-info-container, .show-links-container {
+  display: flex;
+}
+
+.show-title {
+  padding-top: 35px;
+  font-size: 24px;
+}
+
+.show-rating {
+  padding-left: 2em;
+  padding-top: 40px;
+}
+
+.show-overview {
+  padding-top: 30px;
+  width: 50%;
+  height: 90px;
+  overflow: hidden;
+}
+
+.show-links-container {
+  padding-top: 20px;
+}
+
+.show-episode-info-container {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+.show-season-count {
+  padding-right: 1em;
 }

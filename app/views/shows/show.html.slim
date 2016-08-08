@@ -1,1 +1,21 @@
+= content_for :header do
+  .show-title-container
+    .show-title
+      = @show.series_name
+    .show-rating
+      - 5.times do
+        span.glyphicon.glyphicon-star-empty.clickable
+  .show-episode-info-container
+    .show-season-count
+      = pluralize @show.seasons.count, 'Season'
+    .show-episode-count
+      = pluralize @show.episodes.count, 'Episode'
+  .show-overview
+    = @show.overview
+  .show-links-container
+    .watch-link-container
+      | Watch on
+    .social-link-container
+      | Share on
+
 = react_component 'ShowPage', data: DetailedShowPresenter.prepare(@show)
